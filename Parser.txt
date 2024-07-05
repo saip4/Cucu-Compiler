@@ -1,0 +1,12 @@
+function argument: argc
+function argument: argv
+ Const: 2   Const: 3  * := 
+local variable: a
+ Const: 4  := 
+local variable: s
+Var- func func-CALL
+:= 
+local variable: p
+ Const: 1   Const: 34   Const: 2  + - 
+Return 
+Identifier-main

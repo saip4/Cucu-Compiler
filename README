@@ -1,0 +1,114 @@
+Name : Sai Pranav Nuti
+Entry No : 2022CSB1117
+---------------------------------------------
+
+
+
+Project Name: CUCU Compiler
+
+
+
+Description:
+The CUCU Compiler is a tool designed to compile and interpret a custom language with specific syntax and semantics. It includes a lexer and parser implemented using Flex and Bison, respectively.
+
+Files:
+
+	cucu.l: Lexer file written in Flex.
+	cucu.y: Parser file written in Bison.
+	sample.cu: Sample input file in the custom language.
+	sample1.cu: Another sample input file in the custom language.
+	Lexer.txt: Description of lexer rules and patterns.
+	Parser.txt: Description of grammar rules for the parser.
+	README.txt: This file, providing instructions and information about the project.
+
+To Run the Program:
+	flex cucu.l
+	bison -d cucu.y
+	cc lex.yy.c cucu.tab.c -o cucu
+	./cucu input_file.cu
+
+
+Language Description:
+
+	Identifier: A sequence of letters, digits, and underscores, starting with a letter.
+	Variable Declarations: Supports int and char * data types.
+	Function Declaration: Syntax: Data_Type Function_name(argument_list);.
+	Argument List: Comma-separated list of type identifier pairs.
+	Function Definition: Syntax: Data_Type Function_name(argument_list){ Statements; }.
+	Comments: Enclosed within /* and */.
+	Expressions: Supports boolean and arithmetic expressions with specified operators and precedence order.
+	Control Statements: Includes if and while statements with required curly braces.
+	Function Call: Syntax: Variable = Function_Name(arguments);.
+
+
+-------------------------------------------------------------------------------------
+Sample Input:
+
+int main(int argc ,char *argv) {
+	int a = 2 + 3;
+	char *s = 4;
+
+	int p = func();
+
+	return 1 - 34 + 2;
+}
+
+Corresponding Output:
+
+parser.txt:
+
+function argument: argc
+function argument: argv
+ Const: 2   Const: 3  + := 
+local variable: a
+ Const: 4  := 
+local variable: s
+Var- func func-CALL
+:= 
+local variable: p
+ Const: 1   Const: 34   Const: 2  + - 
+Return 
+Identifier-main
+
+Notice that the expression int a = 2 + 3 is parsed as Const: 2   Const: 3  + := 
+
+---------------------------------------------------------------------------------------------------------
+lexer.txt:
+
+TYPE : int
+MAIN: main
+LEFT_PAREN: (
+TYPE : int
+ID : argc
+COMMA: ,
+TYPE : char *
+ID : argv
+RIGHT_PAREN: )
+LEFT_BRACE: {
+TYPE : int
+ID : a
+ASSIGN: =
+NUM : 2
+PLUS: +
+NUM : 3
+SEMICOL: ;
+TYPE : char *
+ID : s
+ASSIGN: =
+NUM : 4
+SEMICOL: ;
+TYPE : int
+ID : p
+ASSIGN: =
+ID : func
+LEFT_PAREN: (
+RIGHT_PAREN: )
+SEMICOL: ;
+RETURN: return
+NUM : 1
+MINUS: -
+NUM : 34
+PLUS: +
+NUM : 2
+SEMICOL: ;
+RIGHT_BRACE: }

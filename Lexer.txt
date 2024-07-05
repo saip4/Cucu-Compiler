@@ -1,0 +1,37 @@
+TYPE : int
+MAIN: main
+LEFT_PAREN: (
+TYPE : int
+ID : argc
+COMMA: ,
+TYPE : char *
+ID : argv
+RIGHT_PAREN: )
+LEFT_BRACE: {
+TYPE : int
+ID : a
+ASSIGN: =
+NUM : 2
+MULT: *
+NUM : 3
+SEMICOL: ;
+TYPE : char *
+ID : s
+ASSIGN: =
+NUM : 4
+SEMICOL: ;
+TYPE : int
+ID : p
+ASSIGN: =
+ID : func
+LEFT_PAREN: (
+RIGHT_PAREN: )
+SEMICOL: ;
+RETURN: return
+NUM : 1
+MINUS: -
+NUM : 34
+PLUS: +
+NUM : 2
+SEMICOL: ;
+RIGHT_BRACE: }
